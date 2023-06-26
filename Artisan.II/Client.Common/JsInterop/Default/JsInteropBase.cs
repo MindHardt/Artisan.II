@@ -1,7 +1,7 @@
 ﻿using Artisan.II.Client.Common.Utils;
 using Microsoft.JSInterop;
 
-namespace Artisan.II.Client.Common.JsInterop;
+namespace Artisan.II.Client.Common.JsInterop.Default;
 
 public abstract class JsInteropBase : IAsyncDisposable
 {

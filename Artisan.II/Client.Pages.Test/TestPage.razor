@@ -1,9 +1,21 @@
 ﻿@page "/Test"
 @using Artisan.II.Client.Common.Components
+@using System.Text
+@using Artisan.II.Client.Common.JsInterop.Core
+@inject IDownloadJsInterop DownloadJsInterop
 
 <ArtisanCheckBox @bind-Value="@Status"/>
-@Status
+<button @onclick="@DownloadAsync"></button>
 
 @code {
     private bool Status { get; set; }
+
+    private async Task DownloadAsync()
+    {
+        string content = Status.ToString();
+        Stream data = new MemoryStream(Encoding.UTF8.GetBytes(content));
+        string fileName = content + ".txt";
+
+        await DownloadJsInterop.DownloadAsync(data, fileName);
+    }
 }
