@@ -1,0 +1,46 @@
+﻿@using System.Reflection
+@using Microsoft.AspNetCore.Components.WebAssembly.Hosting
+@inject IWebAssemblyHostEnvironment HostEnvironment
+
+<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(App).Assembly" AdditionalAssemblies="@AdditionalAssemblies">
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+                <NotAuthorized>
+                    @if (context.User.Identity?.IsAuthenticated != true)
+                    {
+                        <RedirectToLogin/>
+                    }
+                    else
+                    {
+                        <p role="alert">You are not authorized to access this resource.</p>
+                    }
+                </NotAuthorized>
+            </AuthorizeRouteView>
+            <FocusOnNavigate RouteData="@routeData" Selector="h1"/>
+        </Found>
+        <NotFound>
+            <PageTitle>Not found</PageTitle>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <p role="alert">Sorry, there's nothing at this address.</p>
+            </LayoutView>
+        </NotFound>
+    </Router>
+</CascadingAuthenticationState>
+
+@code {
+
+    private IEnumerable<Assembly> AdditionalAssemblies => HostEnvironment.IsDevelopment() ?
+        _mainAssemblies.Concat(_developmentAssemblies) :
+        _mainAssemblies;
+
+    private readonly Assembly[] _mainAssemblies = 
+    {
+    };
+
+    private readonly Assembly[] _developmentAssemblies =
+    {
+        typeof(Pages.Test.TestPage).Assembly
+    };
+
+}

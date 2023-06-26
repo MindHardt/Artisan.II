@@ -1,0 +1,17 @@
+﻿@using Artisan.II.Client.Common.Utils
+<img class="@Class checkbox" onclick="@ChangeValue" src="@SvgUri" alt="@Value"/>
+
+@code {
+    private string Class => Value ? "true" : "false";
+    private string SvgUri => PathHelper.GetFullPath<ArtisanCheckBox>("plus.svg");
+    private async Task ChangeValue()
+    {
+        Value = !Value;
+        await ValueChanged.InvokeAsync(Value);
+    }
+
+    [Parameter]
+    public bool Value { get; set; } = true;
+    [Parameter]
+    public EventCallback<bool> ValueChanged { get; set; }
+}

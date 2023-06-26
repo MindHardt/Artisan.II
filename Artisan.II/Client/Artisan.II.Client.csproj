@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.8" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.8" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="7.0.8" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+        <PackageReference Include="Microsoft.JSInterop" Version="7.0.8" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Client.Common\Artisan.II.Client.Common.csproj" />
+        <ProjectReference Include="..\Client.Pages.Test\Artisan.II.Client.Pages.Test.csproj" />
+        <ProjectReference Include="..\Shared\Artisan.II.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Shared\LoginDisplay.razor" />
+      <_ContentIncludedByDefault Remove="Shared\MainLayout.razor" />
+      <_ContentIncludedByDefault Remove="Shared\NavMenu.razor" />
+      <_ContentIncludedByDefault Remove="Shared\RedirectToLogin.razor" />
+      <_ContentIncludedByDefault Remove="Shared\SurveyPrompt.razor" />
+    </ItemGroup>
+
+</Project>

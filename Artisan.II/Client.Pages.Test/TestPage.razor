@@ -1,0 +1,9 @@
+﻿@page "/Test"
+@using Artisan.II.Client.Common.Components
+
+<ArtisanCheckBox @bind-Value="@Status"/>
+@Status
+
+@code {
+    private bool Status { get; set; }
+}

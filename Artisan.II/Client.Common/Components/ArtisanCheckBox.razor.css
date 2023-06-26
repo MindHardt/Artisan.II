@@ -1,0 +1,33 @@
+﻿.checkbox {
+    width: 32px;
+}
+
+.true {
+    animation: set-true 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes set-true {
+    0% {
+        transform:rotate(45deg);
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        transform:rotate(180deg);
+        filter: hue-rotate(115deg);
+    }
+}
+
+.false {
+    animation: set-false 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes set-false {
+    0% {
+        transform:rotate(0deg);
+        filter: hue-rotate(115deg);
+    }
+    100% {
+        transform:rotate(135deg);
+        filter: hue-rotate(0deg);
+    }
+}
