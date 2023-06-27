@@ -1,8 +1,9 @@
 ﻿@using Artisan.II.Client.Common.Utils
 
-<img class="back" onclick="@ChangeValue" src="@BackSvgUri" alt="Background"/>
-<img class="@Class" onclick="@ChangeValue" src="@ArrowSvgUri" alt="Update"/>
-
+<div class="container">
+    <img class="back" onclick="@ChangeValue" src="@BackSvgUri" alt="Background"/>
+    <img class="@Class" onclick="@ChangeValue" src="@ArrowSvgUri" alt="Update"/>
+</div>
 @code {
     private string BackSvgUri => PathHelper.GetFullPath<ArtisanCheckBox>("svg/fetch-back.svg"); 
     private string ArrowSvgUri => PathHelper.GetFullPath<ArtisanCheckBox>("svg/fetch-arrow.svg"); 
@@ -13,7 +14,7 @@
         StateHasChanged();
     }
 
-    private string Class => $"state-{_iteration}";
+    private string Class => $"arrow state-{_iteration}";
     private int _iteration = 0;
 
     [Parameter]
