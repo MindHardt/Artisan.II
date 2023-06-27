@@ -1,0 +1,18 @@
+﻿@using Artisan.II.Client.Common.Utils
+<img class="@Class" onclick="@ChangeValue" src="@SvgUri" alt="Update"/>
+
+@code {
+    private string SvgUri => PathHelper.GetFullPath<ArtisanCheckBox>("svg/update.svg");
+    private void ChangeValue()
+    {
+        _iteration = ++_iteration % 2;
+        Action();
+        StateHasChanged();
+    }
+
+    private string Class => $"state-{_iteration}";
+    private int _iteration = 0;
+
+    [Parameter, EditorRequired]
+    public Action Action { get; set; } = default!;
+}

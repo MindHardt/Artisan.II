@@ -3,6 +3,7 @@ using System;
 using Artisan.II.Data.EFCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Artisan.II.Data.EFCore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230627063550_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.8");
@@ -24,9 +27,6 @@ namespace Artisan.II.Data.EFCore.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("AvatarName")
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -74,8 +74,6 @@ namespace Artisan.II.Data.EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AvatarName");
-
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -118,10 +116,6 @@ namespace Artisan.II.Data.EFCore.Migrations
                     b.Property<byte[]>("Content")
                         .IsRequired()
                         .HasColumnType("BLOB");
-
-                    b.Property<string>("ContentType")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("Scope")
                         .IsRequired()
@@ -438,16 +432,6 @@ namespace Artisan.II.Data.EFCore.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasDiscriminator().HasValue("Monster");
-                });
-
-            modelBuilder.Entity("Artisan.II.Data.Entities.ApplicationUser", b =>
-                {
-                    b.HasOne("Artisan.II.Data.Entities.UserFiles.UserFile", "Avatar")
-                        .WithMany()
-                        .HasForeignKey("AvatarName")
-                        .OnDelete(DeleteBehavior.SetNull);
-
-                    b.Navigation("Avatar");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

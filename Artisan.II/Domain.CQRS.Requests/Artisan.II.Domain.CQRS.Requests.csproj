@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Data.Entities\Artisan.II.Data.Entities.csproj" />
+    <ProjectReference Include="..\Domain.CQRS.Responses\Artisan.II.Domain.CQRS.Responses.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR.Contracts" Version="2.0.1" />
   </ItemGroup>
 
 </Project>

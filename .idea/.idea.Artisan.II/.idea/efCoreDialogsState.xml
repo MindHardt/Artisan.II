@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EfCoreDialogsState">
+    <option name="keyValueStorage">
+      <map>
+        <entry key="Common:b78f5b08-da19-4bdf-8dc0-cb17a04acce9:dbContext" value="Artisan.II.Data.EFCore.ApplicationDbContext" />
+        <entry key="Common:buildConfiguration" value="Debug" />
+        <entry key="Common:noBuild" value="false" />
+        <entry key="Common:outputFolder" value="Migrations" />
+      </map>
+    </option>
+  </component>
+</project>

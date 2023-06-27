@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.CQRS.Requests\Artisan.II.Domain.CQRS.Requests.csproj" />
+    <ProjectReference Include="..\Domain.Exceptions\Artisan.II.Domain.Exceptions.csproj" />
+    <ProjectReference Include="..\Domain.Services\Artisan.II.Domain.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.0.1" />
+  </ItemGroup>
+
+</Project>

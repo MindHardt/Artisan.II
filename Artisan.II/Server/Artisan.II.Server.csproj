@@ -9,21 +9,26 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="MediatR" Version="12.0.1" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.8" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
     </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\Client\Artisan.II.Client.csproj" />
         <ProjectReference Include="..\Data.EFCore\Artisan.II.Data.EFCore.csproj" />
         <ProjectReference Include="..\Data.Entities\Artisan.II.Data.Entities.csproj" />
+        <ProjectReference Include="..\Domain.CQRS.Handlers\Artisan.II.Domain.CQRS.Handlers.csproj" />
+        <ProjectReference Include="..\Domain.CQRS.Requests\Artisan.II.Domain.CQRS.Requests.csproj" />
+        <ProjectReference Include="..\Domain.Exceptions\Artisan.II.Domain.Exceptions.csproj" />
+        <ProjectReference Include="..\Domain.Services\Artisan.II.Domain.Services.csproj" />
         <ProjectReference Include="..\Shared\Artisan.II.Shared.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
-    </ItemGroup>
-
-    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.DataProtection" Version="7.0.8" />
+        <PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="7.0.8" />
         <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.8" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.8" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.8" />

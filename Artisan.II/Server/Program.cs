@@ -1,7 +1,10 @@
 using Artisan.II.Data.EFCore;
 using Artisan.II.Data.Entities;
-using Artisan.II.Server.Data;
+using Artisan.II.Domain.CQRS.Handlers.Files;
+using Artisan.II.Domain.Services.Default;
+using Artisan.II.Server.Middlewares;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +14,13 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
                        throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(connectionString));
+builder.Services.AddEfCoreRepositories<ApplicationDbContext>();
+builder.Services.AddDataProtection()
+    .PersistKeysToDbContext<ApplicationDbContext>();
+    
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+builder.Services.AddErrorHandling();
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -22,16 +31,31 @@ builder.Services.AddIdentityServer()
 builder.Services.AddAuthentication()
     .AddIdentityServerJwt();
 
+builder.Services.AddMediatR(options =>
+{
+    options.RegisterServicesFromAssemblyContaining<GetFileRequestHandler>();
+});
+
+builder.Services.AddDefaultServices();
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    scope.ServiceProvider.GetRequiredService<ApplicationDbContext>().Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();
     app.UseWebAssemblyDebugging();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 else
 {
@@ -41,6 +65,8 @@ else
 }
 
 app.UseHttpsRedirection();
+
+app.UseErrorHandling();
 
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();

@@ -1,10 +1,14 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Artisan.II.Server.Data.Migrations
+#nullable disable
+
+namespace Artisan.II.Data.EFCore.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    /// <inheritdoc />
+    public partial class Initial : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -16,7 +20,10 @@ namespace Artisan.II.Server.Data.Migrations
                     NormalizedName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "TEXT", nullable: true)
                 },
-                constraints: table => { table.PrimaryKey("PK_AspNetRoles", x => x.Id); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetRoles", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "AspNetUsers",
@@ -38,7 +45,39 @@ namespace Artisan.II.Server.Data.Migrations
                     LockoutEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
                     AccessFailedCount = table.Column<int>(type: "INTEGER", nullable: false)
                 },
-                constraints: table => { table.PrimaryKey("PK_AspNetUsers", x => x.Id); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Creatures",
+                columns: table => new
+                {
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    DangerLevel = table.Column<int>(type: "INTEGER", nullable: false),
+                    Health = table.Column<int>(type: "INTEGER", nullable: false),
+                    Discriminator = table.Column<string>(type: "TEXT", nullable: false),
+                    Type = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Creatures", x => x.Name);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DataProtectionKeys",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    FriendlyName = table.Column<string>(type: "TEXT", nullable: true),
+                    Xml = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DataProtectionKeys", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "DeviceCodes",
@@ -52,9 +91,12 @@ namespace Artisan.II.Server.Data.Migrations
                     Description = table.Column<string>(type: "TEXT", maxLength: 200, nullable: true),
                     CreationTime = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Expiration = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Data = table.Column<string>(type: "TEXT", maxLength: 51220, nullable: false)
+                    Data = table.Column<string>(type: "TEXT", maxLength: 50000, nullable: false)
                 },
-                constraints: table => { table.PrimaryKey("PK_DeviceCodes", x => x.UserCode); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DeviceCodes", x => x.UserCode);
+                });
 
             migrationBuilder.CreateTable(
                 name: "Keys",
@@ -63,13 +105,16 @@ namespace Artisan.II.Server.Data.Migrations
                     Id = table.Column<string>(type: "TEXT", nullable: false),
                     Version = table.Column<int>(type: "INTEGER", nullable: false),
                     Created = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Use = table.Column<string>(type: "TEXT", maxLength: 450, nullable: true),
+                    Use = table.Column<string>(type: "TEXT", nullable: true),
                     Algorithm = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     IsX509Certificate = table.Column<bool>(type: "INTEGER", nullable: false),
                     DataProtected = table.Column<bool>(type: "INTEGER", nullable: false),
-                    Data = table.Column<string>(type: "TEXT", maxLength: 51220, nullable: false)
+                    Data = table.Column<string>(type: "TEXT", nullable: false)
                 },
-                constraints: table => { table.PrimaryKey("PK_Keys", x => x.Id); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Keys", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "PersistedGrants",
@@ -84,9 +129,25 @@ namespace Artisan.II.Server.Data.Migrations
                     CreationTime = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Expiration = table.Column<DateTime>(type: "TEXT", nullable: true),
                     ConsumedTime = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    Data = table.Column<string>(type: "TEXT", maxLength: 51220, nullable: false)
+                    Data = table.Column<string>(type: "TEXT", maxLength: 50000, nullable: false)
                 },
-                constraints: table => { table.PrimaryKey("PK_PersistedGrants", x => x.Key); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PersistedGrants", x => x.Key);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserFiles",
+                columns: table => new
+                {
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Scope = table.Column<string>(type: "TEXT", nullable: false),
+                    Content = table.Column<byte[]>(type: "BLOB", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserFiles", x => x.Name);
+                });
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
@@ -268,6 +329,7 @@ namespace Artisan.II.Server.Data.Migrations
                 columns: new[] { "SubjectId", "SessionId", "Type" });
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
@@ -286,6 +348,12 @@ namespace Artisan.II.Server.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Creatures");
+
+            migrationBuilder.DropTable(
+                name: "DataProtectionKeys");
+
+            migrationBuilder.DropTable(
                 name: "DeviceCodes");
 
             migrationBuilder.DropTable(
@@ -293,6 +361,9 @@ namespace Artisan.II.Server.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "PersistedGrants");
+
+            migrationBuilder.DropTable(
+                name: "UserFiles");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

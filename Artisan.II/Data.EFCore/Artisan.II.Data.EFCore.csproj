@@ -8,10 +8,17 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="7.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="7.0.8" />
+    <PackageReference Include="Scrutor" Version="4.2.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Data.Abstractions\Artisan.II.Data.Abstractions.csproj" />
     <ProjectReference Include="..\Data.Entities\Artisan.II.Data.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>
