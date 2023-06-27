@@ -1,28 +1,20 @@
 ﻿@page "/Test"
 @using Artisan.II.Client.Common.Components
-@using System.Text
-@using Artisan.II.Client.Common.JsInterop.Core
 @using Bogus
-@inject IDownloadJsInterop DownloadJsInterop
 @inject Faker Faker
 
-<ArtisanCheckBox @bind-Value="@Status"/>
-<button @onclick="@DownloadAsync">+</button>
-
-<ArtisanUpdateButton Action="@UpdateName"></ArtisanUpdateButton>
+<div class="component">
+    <ArtisanCheckBox @bind-Value="@Status"/>
+    <br/>
+    <ArtisanUpdateButton Action="@UpdateName"></ArtisanUpdateButton>
+    <br/>
+    <ArtisanFetchButton Action="@UpdateName"></ArtisanFetchButton>
+    <br/>
+</div>
 @Name
 
 @code {
     private bool Status { get; set; }
-
-    private async Task DownloadAsync()
-    {
-        string content = Status.ToString();
-        Stream data = new MemoryStream(Encoding.UTF8.GetBytes(content));
-        string fileName = content + ".txt";
-
-        await DownloadJsInterop.DownloadAsync(data, fileName);
-    }
 
     private string Name { get; set; } = string.Empty;
 

@@ -1,9 +1,6 @@
-﻿.checkbox {
-    width: 32px;
-}
-
-.true {
-    animation: set-true 1s;
+﻿.true {
+    width: 100%;
+    animation: set-true 0.75s;
     animation-fill-mode: forwards;
 }
 @keyframes set-true {
@@ -18,7 +15,8 @@
 }
 
 .false {
-    animation: set-false 1s;
+    width: 100%;
+    animation: set-false 0.75s;
     animation-fill-mode: forwards;
 }
 @keyframes set-false {

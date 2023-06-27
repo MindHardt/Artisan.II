@@ -1,5 +1,5 @@
 ﻿@using Artisan.II.Client.Common.Utils
-<img class="@Class checkbox" onclick="@ChangeValue" src="@SvgUri" alt="@Value"/>
+<img class="@Class" onclick="@ChangeValue" src="@SvgUri" alt="@Value"/>
 
 @code {
     private string Class => Value ? "true" : "false";

@@ -1,0 +1,49 @@
+.back {
+    width: 75%;
+    position: relative;
+}
+.state-1 {
+    width: 75%;
+    left: 25%;
+    position: relative;
+    
+    animation: update-1 0.75s;
+    animation-fill-mode: forwards;
+}
+.state-0 {
+    width: 75%;
+    left: 25%;
+    position: relative;
+    
+    animation: update-0 0.75s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes update-1 {
+    40%{
+        animation-timing-function: ease-in;
+        filter: opacity(0%);
+        transform: translateY(+25%);
+    }
+    60% {
+        filter: opacity(0%);
+        transform: translateY(-50%);
+    }
+    100%{
+        animation-timing-function: ease-out;
+    }
+}
+@keyframes update-0 {
+    40%{
+        animation-timing-function: ease-in;
+        filter: opacity(0%);
+        transform: translateY(+25%);
+    }
+    60% {
+        filter: opacity(0%);
+        transform: translateY(-50%);
+    }
+    100%{
+        animation-timing-function: ease-out;
+    }
+}

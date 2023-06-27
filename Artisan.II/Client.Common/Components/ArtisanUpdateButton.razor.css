@@ -1,39 +1,23 @@
 .state-1 {
-    width: 32px;
+    width: 100%;
     animation: update-1 0.75s;
     animation-fill-mode: forwards;
 }
 .state-0 {
-    width: 32px;
+    width: 100%;
     animation: update-0 0.75s;
     animation-fill-mode: forwards;
 }
 
 @keyframes update-1 {
-    0% {
-        transform:rotate(0deg);
-        filter: opacity(100%);
-    }
     50%{
-        transform:rotate(180deg);
         filter: opacity(50%);
-    }
-    100% {
-        transform:rotate(360deg);
-        filter: opacity(100%);
+        transform: scaleX(1.1) scaleY(1.1);
     }
 }
 @keyframes update-0 {
-    0% {
-        transform:rotate(0deg);
-        filter: opacity(100%);
-    }
     50%{
-        transform:rotate(180deg);
         filter: opacity(50%);
-    }
-    100% {
-        transform:rotate(360deg);
-        filter: opacity(100%);
+        transform: scaleX(1.1) scaleY(1.1);
     }
 }
