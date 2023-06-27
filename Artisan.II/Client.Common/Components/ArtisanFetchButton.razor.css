@@ -1,20 +1,26 @@
+.container{
+    height: 4.75vw;
+    width: 4.75vw;
+    padding: 0px;
+}
+
 .back {
-    width: 75%;
+    width: 100%;
+    height: 100%;
+}
+
+.arrow {
+    height: 60%;
+    width: 60%;
     position: relative;
+    top: -75%;
+    left: 20%
 }
 .state-1 {
-    width: 75%;
-    left: 25%;
-    position: relative;
-    
     animation: update-1 0.75s;
     animation-fill-mode: forwards;
 }
 .state-0 {
-    width: 75%;
-    left: 25%;
-    position: relative;
-    
     animation: update-0 0.75s;
     animation-fill-mode: forwards;
 }
