@@ -1,20 +1,25 @@
-.container{
+.container {
     height: 4.75vw;
     width: 4.75vw;
     padding: 0px;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    gap: 4px;
+    flex-direction: column;
+    margin-top: 3vh;
 }
 
 .back {
-    width: 100%;
-    height: 100%;
+    flex: 1 1 0;
+    align-self: stretch;
 }
 
 .arrow {
+    position: relative;
+    transform: translate(0%, -140%);
     height: 60%;
     width: 60%;
-    position: relative;
-    top: -75%;
-    left: 20%
 }
 .state-1 {
     animation: update-1 0.75s;
