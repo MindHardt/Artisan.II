@@ -1,23 +1,15 @@
-.state-1 {
-    width: 100%;
-    animation: update-1 0.75s;
-    animation-fill-mode: forwards;
-}
-.state-0 {
-    width: 100%;
-    animation: update-0 0.75s;
+.update {
+    animation: update-animation 0.75s;
     animation-fill-mode: forwards;
 }
 
-@keyframes update-1 {
-    50%{
+@keyframes update-animation {
+    50% {
         filter: opacity(50%);
         transform: scaleX(1.1) scaleY(1.1);
     }
-}
-@keyframes update-0 {
-    50%{
-        filter: opacity(50%);
-        transform: scaleX(1.1) scaleY(1.1);
+    75% {
+        filter: opacity(100%);
+        transform: scaleX(0.9) scaleY(0.9);
     }
 }

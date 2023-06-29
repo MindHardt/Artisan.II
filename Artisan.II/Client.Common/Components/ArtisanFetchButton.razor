@@ -1,21 +1,24 @@
-﻿@using Artisan.II.Client.Common.Utils
+﻿@using Artisan.II.Client.Common.JsInterop.Core
+@inject IDomJsInterop JsInterop
 
-<div class="container">
-    <img class="back" onclick="@ChangeValue" src="@BackSvgUri" alt="Background"/>
-    <img class="@Class" onclick="@ChangeValue" src="@ArrowSvgUri" alt="Update"/>
+<ArtisanStylesheet/>
+<div class="component-base">
+    <img onclick="@ChangeValue" src="@BackSvgUri" alt="Background"/>
+    <img @ref="@_arrow" class="fetch" onclick="@ChangeValue" src="@ArrowSvgUri" alt="Update"/>
 </div>
+
 @code {
-    private string BackSvgUri => PathHelper.GetFullPath<ArtisanCheckBox>("svg/fetch-back.svg"); 
-    private string ArrowSvgUri => PathHelper.GetFullPath<ArtisanCheckBox>("svg/fetch-arrow.svg"); 
-    private void ChangeValue()
+    private const string AnimationClass = "fetch";
+    private ElementReference _arrow;
+    
+    private static string BackSvgUri => PathHelper.GetFullPath<ArtisanCheckBox>("svg/fetch_circle.svg"); 
+    private static string ArrowSvgUri => PathHelper.GetFullPath<ArtisanCheckBox>("svg/fetch_arrow.svg"); 
+    private async Task ChangeValue()
     {
-        _iteration = ++_iteration % 2;
+        await JsInterop.ReplayAnimationAsync(_arrow, AnimationClass);
         Action?.Invoke();
         StateHasChanged();
     }
-
-    private string Class => $"arrow state-{_iteration}";
-    private int _iteration = 0;
 
     [Parameter]
     public Action? Action { get; set; } = default!;

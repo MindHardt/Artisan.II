@@ -1,9 +1,11 @@
-﻿@using Artisan.II.Client.Common.Utils
-<img class="@Class" onclick="@ChangeValue" src="@SvgUri" alt="@Value"/>
+﻿<ArtisanStylesheet/>
+<div class="component-base">
+    <img class="@Class" onclick="@ChangeValue" src="@SvgUri" alt="@Value"/>
+</div>
 
 @code {
     private string Class => Value ? "true" : "false";
-    private string SvgUri => PathHelper.GetFullPath<ArtisanCheckBox>("svg/plus.svg");
+    private static string SvgUri => PathHelper.GetFullPath<ArtisanCheckBox>("svg/checkbox.svg");
     private async Task ChangeValue()
     {
         Value = !Value;

@@ -1,0 +1,13 @@
+.heart {
+    animation-name: heartbeat;
+    animation-iteration-count: infinite;
+}
+
+@keyframes heartbeat {
+    20% {
+        transform: scale(0.9, 0.9);  
+    }
+    40% {
+        transform: scaleX(1) scaleY(1);
+    }
+}

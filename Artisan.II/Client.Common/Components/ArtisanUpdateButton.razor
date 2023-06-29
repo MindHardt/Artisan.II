@@ -1,18 +1,21 @@
-﻿@using Artisan.II.Client.Common.Utils
-<img class="@Class" onclick="@ChangeValue" src="@SvgUri" alt="Update"/>
+﻿@using Artisan.II.Client.Common.JsInterop.Core
+@inject IDomJsInterop JsInterop
+
+<ArtisanStylesheet/>
+<div class="component-base">
+    <img @ref="@_image" class="update" onclick="@ChangeValue" src="@SvgUri" alt="Update"/>
+</div>
 
 @code {
+    private const string AnimationClass = "update";
+    private ElementReference _image;
     private string SvgUri => PathHelper.GetFullPath<ArtisanCheckBox>("svg/update.svg"); 
-    private void ChangeValue()
+    private async Task ChangeValue()
     {
-        _iteration = ++_iteration % 2;
+        await JsInterop.ReplayAnimationAsync(_image, AnimationClass);
         Action?.Invoke();
         StateHasChanged();
     }
-
-    private string Class => $"state-{_iteration}";
-    private int _iteration = 0;
-
     [Parameter]
     public Action? Action { get; set; } = default!;
 }

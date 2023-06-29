@@ -1,0 +1,12 @@
+﻿<ArtisanStylesheet/>
+<div class="component-base">
+    <img src="@ClockSvgUri" alt="Clock"/>
+    <img class="arrow-hour" src="@ArrowHourSvgUri" alt="Arrow"/>
+    <img class="arrow-minute" src="@ArrowMinuteSvgUri" alt="Arrow"/>
+</div>
+
+@code {
+    private static string ClockSvgUri => PathHelper.GetFullPath<ArtisanCheckBox>("svg/loader_clock.svg");
+    private static string ArrowHourSvgUri => PathHelper.GetFullPath<ArtisanCheckBox>("svg/loader_arrow_hour.svg");
+    private static string ArrowMinuteSvgUri => PathHelper.GetFullPath<ArtisanCheckBox>("svg/loader_arrow_minute.svg");
+}

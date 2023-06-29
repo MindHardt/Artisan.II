@@ -1,0 +1,14 @@
+.arrow-hour {
+    animation: clock-rotate 12s linear infinite;
+}
+
+.arrow-minute {
+    animation: clock-rotate 1s linear infinite;
+}
+
+@keyframes clock-rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+

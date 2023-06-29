@@ -1,54 +1,12 @@
-.container {
-    height: 4.75vw;
-    width: 4.75vw;
-    padding: 0px;
-    justify-content: center;
-    align-items: center;
-    display: inline-flex;
-    gap: 4px;
-    flex-direction: column;
-    margin-top: 3vh;
+.fetch {
+    animation: update 0.75s forwards;
 }
 
-.back {
-    flex: 1 1 0;
-    align-self: stretch;
-}
-
-.arrow {
-    position: relative;
-    transform: translate(0%, -140%);
-    height: 60%;
-    width: 60%;
-}
-.state-1 {
-    animation: update-1 0.75s;
-    animation-fill-mode: forwards;
-}
-.state-0 {
-    animation: update-0 0.75s;
-    animation-fill-mode: forwards;
-}
-
-@keyframes update-1 {
+@keyframes update {
     40%{
         animation-timing-function: ease-in;
         filter: opacity(0%);
-        transform: translateY(+25%);
-    }
-    60% {
-        filter: opacity(0%);
-        transform: translateY(-50%);
-    }
-    100%{
-        animation-timing-function: ease-out;
-    }
-}
-@keyframes update-0 {
-    40%{
-        animation-timing-function: ease-in;
-        filter: opacity(0%);
-        transform: translateY(+25%);
+        transform: translateY(+50%);
     }
     60% {
         filter: opacity(0%);

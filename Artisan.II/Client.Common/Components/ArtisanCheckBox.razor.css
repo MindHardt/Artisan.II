@@ -1,31 +1,29 @@
 ﻿.true {
-    width: 100%;
     animation: set-true 0.75s;
     animation-fill-mode: forwards;
 }
 @keyframes set-true {
     0% {
         transform:rotate(45deg);
-        filter: hue-rotate(0deg);
+        filter: hue-rotate(-110deg);
     }
     100% {
         transform:rotate(180deg);
-        filter: hue-rotate(115deg);
+        filter: hue-rotate(0deg);
     }
 }
 
 .false {
-    width: 100%;
     animation: set-false 0.75s;
     animation-fill-mode: forwards;
 }
 @keyframes set-false {
     0% {
         transform:rotate(0deg);
-        filter: hue-rotate(115deg);
+        filter: hue-rotate(0deg);
     }
     100% {
         transform:rotate(135deg);
-        filter: hue-rotate(0deg);
+        filter: hue-rotate(-110deg);
     }
 }

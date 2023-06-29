@@ -5,12 +5,21 @@
 
 <div class="component">
     <ArtisanCheckBox @bind-Value="@Status"/>
-    <br/>
-    <ArtisanUpdateButton Action="@UpdateName"></ArtisanUpdateButton>
-    <br/>
-    <ArtisanFetchButton Action="@UpdateName"></ArtisanFetchButton>
-    <br/>
 </div>
+<div class="component">
+    <ArtisanUpdateButton Action="@UpdateName"/>
+</div>
+<div class="component">
+    <ArtisanFetchButton Action="@UpdateName"/>
+</div>
+<div class="component">
+    <ArtisanLoader/>
+</div>
+<div class="component">
+    <ArtisanHealth Percent="@Health"/>
+</div>
+<InputNumber @bind-Value="@Health"/>
+
 @Name
 
 @code {
@@ -23,4 +32,6 @@
         Name = Faker.Name.FullName();
         StateHasChanged();
     }
+
+    private int Health { get; set; } = 100;
 }
