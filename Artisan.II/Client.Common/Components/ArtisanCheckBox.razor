@@ -1,5 +1,4 @@
-﻿<ArtisanStylesheet/>
-<div class="component-base">
+﻿<div class="component-base">
     <img class="@Class" onclick="@ChangeValue" src="@SvgUri" alt="@Value"/>
 </div>
 
@@ -8,10 +7,13 @@
     private static string SvgUri => PathHelper.GetFullPath<ArtisanCheckBox>("svg/checkbox.svg");
     private async Task ChangeValue()
     {
+        if (Clickable is false) return;
         Value = !Value;
         await ValueChanged.InvokeAsync(Value);
     }
 
+    [Parameter]
+    public bool Clickable { get; set; } = true;
     [Parameter]
     public bool Value { get; set; } = true;
     [Parameter]

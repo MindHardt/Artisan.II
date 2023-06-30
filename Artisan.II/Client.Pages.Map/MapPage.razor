@@ -1,0 +1,44 @@
+﻿@page "/map"
+@using Artisan.II.Client.Pages.Map.Models
+
+<div style="height: 64px">
+    <ArtisanUpdateButton Action="@GeneratePosition" />
+</div>
+
+<h1>Позиция: @CurrentPosition</h1>
+
+<div style="height: 64px">
+    <ArtisanBuilderSelector @bind-IsBuilder="@IsCustomArea" />
+</div>
+
+@if (IsCustomArea)
+{
+    
+}
+else
+{
+    <NamedAreaSelector @bind-Area="@CurrentArea" Areas="@_areas"/>
+}
+
+<h1>Кастомная область? @IsCustomArea</h1>
+
+@code {
+    private NamedArea CurrentArea { get; set; } = DefaultAreas.First();
+    private Coordinates? CurrentPosition { get; set; }
+    private bool IsCustomArea { get; set; } = true;
+
+    private List<NamedArea> _areas = DefaultAreas.ToList();
+
+    private void GeneratePosition()
+    {
+        CurrentPosition = CurrentArea.Area.GetRandomPoint();
+        StateHasChanged();
+    }
+
+    private static readonly NamedArea[] DefaultAreas =
+    {
+        new("Москва", new Area((55.75f, 37.60f), 0.175f, 0.25f)),
+        new("МосОбласть", new Area((55.75f, 37.60f), 0.3f, 0.5f)),
+    };
+
+}

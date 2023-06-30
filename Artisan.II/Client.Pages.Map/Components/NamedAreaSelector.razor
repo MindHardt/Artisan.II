@@ -1,0 +1,36 @@
+﻿@using Artisan.II.Client.Pages.Map.Models
+
+@foreach (var area in Areas)
+{
+    <div class="@GetClass(area)" onclick="@(() => SelectArea(area.Name))">
+        @if (IsSelected(area))
+        {
+            <text>👉</text>
+        }
+        @area.Name
+    </div>
+}
+
+
+
+@code {
+
+    [Parameter]
+    public IReadOnlyCollection<NamedArea> Areas { get; set; } = Array.Empty<NamedArea>();
+
+    [Parameter]
+    public NamedArea Area { get; set; } = null!;
+    [Parameter]
+    public EventCallback<NamedArea> AreaChanged { get; set; }
+
+    private async Task SelectArea(string name)
+    {
+        var selectedArea = Areas.First(x => x.Name == name);
+        
+        await AreaChanged.InvokeAsync(selectedArea);
+        StateHasChanged();
+    }
+
+    private string GetClass(NamedArea area) => IsSelected(area) ? "selected" : "not-selected";
+    private bool IsSelected(NamedArea area) => Area.Name == area.Name;
+}

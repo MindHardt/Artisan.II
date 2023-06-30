@@ -18,6 +18,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Client.Common\Artisan.II.Client.Common.csproj" />
+        <ProjectReference Include="..\Client.Pages.Map\Artisan.II.Client.Pages.Map.csproj" />
         <ProjectReference Include="..\Client.Pages.Test\Artisan.II.Client.Pages.Test.csproj" />
         <ProjectReference Include="..\Shared\Artisan.II.Shared.csproj" />
     </ItemGroup>

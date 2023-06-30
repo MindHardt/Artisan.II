@@ -2,6 +2,7 @@
 @using Microsoft.AspNetCore.Components.WebAssembly.Hosting
 @inject IWebAssemblyHostEnvironment HostEnvironment
 
+<ArtisanStylesheet/>
 <CascadingAuthenticationState>
     <Router AppAssembly="@typeof(App).Assembly" AdditionalAssemblies="@AdditionalAssemblies">
         <Found Context="routeData">
@@ -36,6 +37,7 @@
 
     private readonly Assembly[] _mainAssemblies = 
     {
+        typeof(Pages.Map.MapPage).Assembly
     };
 
     private readonly Assembly[] _developmentAssemblies =

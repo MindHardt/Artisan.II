@@ -1,0 +1,9 @@
+.selected {
+    background-color: plum;
+    font-size: 20px;
+}
+
+.not-selected {
+    background-color: sandybrown;
+    font-size: 16px;
+}

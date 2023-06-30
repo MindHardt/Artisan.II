@@ -1,7 +1,7 @@
 ﻿@using Artisan.II.Client.Common.JsInterop.Core
+@using System.Diagnostics.CodeAnalysis
 @inject IDomJsInterop JsInterop
 
-<ArtisanStylesheet/>
 <div class="component-base">
     <img @ref="@_image" class="update" onclick="@ChangeValue" src="@SvgUri" alt="Update"/>
 </div>
@@ -16,6 +16,7 @@
         Action?.Invoke();
         StateHasChanged();
     }
-    [Parameter]
-    public Action? Action { get; set; } = default!;
+    [Parameter, EditorRequired]
+    public Action Action { get; set; } = null!;
+
 }

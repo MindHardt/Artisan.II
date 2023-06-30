@@ -1,0 +1,27 @@
+.selected {
+    animation: set-selected 1s forwards;
+}
+@keyframes set-selected {
+    0% {
+        transform: rotate(0deg);
+        filter: opacity(100%);
+    }
+    100% {
+        transform: rotate(180deg);
+        filter: opacity(0%);
+    }
+}
+
+.deselected {
+    animation: set-deselected 1s forwards;
+}
+@keyframes set-deselected {
+    0% {
+        transform: rotate(180deg);
+        filter: opacity(0%);
+    }
+    100% {
+        transform: rotate(0deg);
+        filter: opacity(100%);
+    }
+}

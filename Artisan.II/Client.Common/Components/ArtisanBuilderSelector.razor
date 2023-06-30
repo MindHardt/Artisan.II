@@ -1,0 +1,25 @@
+﻿<div class="component-base">
+    <img class="@GearClass" onclick="@ChangeValue" src="@GearSvgUri" alt="@IsBuilder"/>
+    <img class="@ListClass" onclick="@ChangeValue" src="@ListSvgUri" alt="@IsBuilder"/>
+</div>
+
+@code {
+    private string GearClass => IsBuilder is false ? "selected" : "deselected";
+    private string ListClass => IsBuilder ? "selected" : "deselected";
+    
+    private static string GearSvgUri => PathHelper.GetFullPath<ArtisanCheckBox>("svg/builder_gear.svg");
+    private static string ListSvgUri => PathHelper.GetFullPath<ArtisanCheckBox>("svg/builder_list.svg");
+    private async Task ChangeValue()
+    {
+        if (Clickable is false) return;
+        IsBuilder = !IsBuilder;
+        await IsBuilderChanged.InvokeAsync(IsBuilder);
+    }
+
+    [Parameter]
+    public bool Clickable { get; set; } = true;
+    [Parameter]
+    public bool IsBuilder { get; set; } = true;
+    [Parameter]
+    public EventCallback<bool> IsBuilderChanged { get; set; }
+}
