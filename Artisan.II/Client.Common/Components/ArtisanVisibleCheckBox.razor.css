@@ -1,0 +1,23 @@
+﻿.seen {
+    animation: set-seen 0.75s forwards;
+}
+@keyframes set-seen {
+    0% {
+        clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+    }
+    100% {
+        clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+    }
+}
+
+.unseen {
+    animation: set-unseen 0.75s forwards;
+}
+@keyframes set-unseen {
+    0% {
+        clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+    }
+    100% {
+        clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+    }
+}
