@@ -1,0 +1,24 @@
+﻿<ArtisanStylesheet/>
+<div class="component-base">
+    <img onclick="@ChangeValue" src="@EyeSvgUri" alt="@Value"/>
+    <img class="@Class" onclick="@ChangeValue" src="@EyeStrokeSvgUri" alt="@Value"/>
+</div>
+
+@code {
+    private string Class => Value ? "seen" : "unseen";
+    private static string EyeSvgUri => PathHelper.GetFullPath<ArtisanCheckBox>("svg/eye.svg");
+    private static string EyeStrokeSvgUri => PathHelper.GetFullPath<ArtisanCheckBox>("svg/eye_stroke.svg");
+    private async Task ChangeValue()
+    {
+        if (Clickable is false) return;
+        Value = !Value;
+        await ValueChanged.InvokeAsync(Value);
+    }
+
+    [Parameter]
+    public bool Clickable { get; set; } = false;
+    [Parameter]
+    public bool Value { get; set; } = true;
+    [Parameter]
+    public EventCallback<bool> ValueChanged { get; set; }
+}
