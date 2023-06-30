@@ -1,6 +1,4 @@
-﻿@using System.Globalization
-
-<ArtisanStylesheet/>
+﻿<ArtisanStylesheet/>
 <div class="component-base">
     <img class="heart" style="@HeartbeatStyle" src="@HeartSvgUri" alt="Heart"/>
     <img class="heart" style="@HeartbeatStyle @DeadStyle" src="@HeartFullSvgUri" alt="Heart"/>
@@ -9,7 +7,7 @@
 @code {
     private static string HeartSvgUri => PathHelper.GetFullPath<ArtisanCheckBox>("svg/heart.svg");
     private static string HeartFullSvgUri => PathHelper.GetFullPath<ArtisanCheckBox>("svg/heart_full.svg");
-    private static CultureInfo _cultureInfo = CultureInfo.GetCultureInfo("en");
+    private static readonly System.Globalization.CultureInfo CultureInfo = System.Globalization.CultureInfo.GetCultureInfo("en");
     
     [Parameter]
     public int Percent { get; set; }
@@ -18,7 +16,7 @@
     private int DamagePercent => 100 - HealthPercent;
     private float BeatPeriodSeconds => 0.2f + HealthPercent / 100f;
     
-    private string HeartbeatStyle => $"animation-duration: {BeatPeriodSeconds.ToString(_cultureInfo)}s;";
+    private string HeartbeatStyle => $"animation-duration: {BeatPeriodSeconds.ToString(CultureInfo)}s;";
     private string DeadStyle => $"clip-path: polygon(" +
                                 $"100% 100%, " +
                                 $"100% {DamagePercent}%, " +
