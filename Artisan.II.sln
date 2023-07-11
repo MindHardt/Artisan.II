@@ -1,42 +1,50 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artisan.II.Server", "Artisan.II\Server\Artisan.II.Server.csproj", "{A016E4F1-141F-4B72-B299-5121269B57E7}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Artisan.II.Server", "Artisan.II\Server\Artisan.II.Server.csproj", "{A016E4F1-141F-4B72-B299-5121269B57E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artisan.II.Client", "Artisan.II\Client\Artisan.II.Client.csproj", "{EEF4C4DD-5AAA-4C7D-A232-BAFECFEB687F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Artisan.II.Client", "Artisan.II\Client\Artisan.II.Client.csproj", "{EEF4C4DD-5AAA-4C7D-A232-BAFECFEB687F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artisan.II.Shared", "Artisan.II\Shared\Artisan.II.Shared.csproj", "{11309AC7-3FF3-492A-A785-C78A0BB9CDEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Artisan.II.Shared", "Artisan.II\Shared\Artisan.II.Shared.csproj", "{11309AC7-3FF3-492A-A785-C78A0BB9CDEE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{96CC3CC0-13FB-402A-BD26-AE9F2AF8316E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artisan.II.Data.EFCore", "Artisan.II\Data.EFCore\Artisan.II.Data.EFCore.csproj", "{B78F5B08-DA19-4BDF-8DC0-CB17A04ACCE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Artisan.II.Data.EFCore", "Artisan.II\Data.EFCore\Artisan.II.Data.EFCore.csproj", "{B78F5B08-DA19-4BDF-8DC0-CB17A04ACCE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artisan.II.Data.Abstractions", "Artisan.II\Data.Abstractions\Artisan.II.Data.Abstractions.csproj", "{A42BE9DD-E6AB-4871-8392-64649AC9326F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Artisan.II.Data.Abstractions", "Artisan.II\Data.Abstractions\Artisan.II.Data.Abstractions.csproj", "{A42BE9DD-E6AB-4871-8392-64649AC9326F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artisan.II.Data.Entities", "Artisan.II\Data.Entities\Artisan.II.Data.Entities.csproj", "{B1BBCCC5-7768-474D-A4C2-3C706F902706}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Artisan.II.Data.Entities", "Artisan.II\Data.Entities\Artisan.II.Data.Entities.csproj", "{B1BBCCC5-7768-474D-A4C2-3C706F902706}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{D3952782-534E-43B7-B97A-F9FC79A13BEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artisan.II.Client.Common", "Artisan.II\Client.Common\Artisan.II.Client.Common.csproj", "{11A48C2A-A10A-4565-AADB-ACF476F7A6FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Artisan.II.Client.Common", "Artisan.II\Client.Common\Artisan.II.Client.Common.csproj", "{11A48C2A-A10A-4565-AADB-ACF476F7A6FB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pages", "Pages", "{CB597445-9B1F-473F-A3DF-1DBC5C24CF07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artisan.II.Client.Pages.Test", "Artisan.II\Client.Pages.Test\Artisan.II.Client.Pages.Test.csproj", "{BDC48A89-5355-4F7C-B084-2FFD38A8158A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Artisan.II.Client.Pages.Test", "Artisan.II\Client.Pages.Test\Artisan.II.Client.Pages.Test.csproj", "{BDC48A89-5355-4F7C-B084-2FFD38A8158A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{2E9C9656-1E86-478F-966A-C90E7D23D30C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artisan.II.Domain.CQRS.Handlers", "Artisan.II\Domain.CQRS.Handlers\Artisan.II.Domain.CQRS.Handlers.csproj", "{82AA6408-77DA-45AD-A269-5B7A46D4264D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Artisan.II.Domain.CQRS.Handlers", "Artisan.II\Domain.CQRS.Handlers\Artisan.II.Domain.CQRS.Handlers.csproj", "{82AA6408-77DA-45AD-A269-5B7A46D4264D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artisan.II.Domain.CQRS.Requests", "Artisan.II\Domain.CQRS.Requests\Artisan.II.Domain.CQRS.Requests.csproj", "{C355D169-D92F-43F6-A79F-BBCF6651CB95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Artisan.II.Domain.CQRS.Requests", "Artisan.II\Domain.CQRS.Requests\Artisan.II.Domain.CQRS.Requests.csproj", "{C355D169-D92F-43F6-A79F-BBCF6651CB95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artisan.II.Domain.CQRS.Responses", "Artisan.II\Domain.CQRS.Responses\Artisan.II.Domain.CQRS.Responses.csproj", "{18A1B1DF-4F41-4131-B100-43F1293D550A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Artisan.II.Domain.CQRS.Responses", "Artisan.II\Domain.CQRS.Responses\Artisan.II.Domain.CQRS.Responses.csproj", "{18A1B1DF-4F41-4131-B100-43F1293D550A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CQRS", "CQRS", "{1A505F9A-FF76-46F5-88BA-F82CBE601DAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artisan.II.Domain.Services", "Artisan.II\Domain.Services\Artisan.II.Domain.Services.csproj", "{A13B7968-DD49-4DE4-B510-6DA3CBB4DCAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Artisan.II.Domain.Services", "Artisan.II\Domain.Services\Artisan.II.Domain.Services.csproj", "{A13B7968-DD49-4DE4-B510-6DA3CBB4DCAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artisan.II.Domain.Exceptions", "Artisan.II\Domain.Exceptions\Artisan.II.Domain.Exceptions.csproj", "{95EB48F6-7E7C-43F8-A924-11CCE544B05E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Artisan.II.Domain.Exceptions", "Artisan.II\Domain.Exceptions\Artisan.II.Domain.Exceptions.csproj", "{95EB48F6-7E7C-43F8-A924-11CCE544B05E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artisan.II.Client.Pages.Map", "Artisan.II\Client.Pages.Map\Artisan.II.Client.Pages.Map.csproj", "{D8ADFBEF-9BF2-4C9C-89E6-8D906C0CD523}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Artisan.II.Client.Pages.Map", "Artisan.II\Client.Pages.Map\Artisan.II.Client.Pages.Map.csproj", "{D8ADFBEF-9BF2-4C9C-89E6-8D906C0CD523}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6F73727D-5B52-4BE0-AC7B-6311174E13C3}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,21 +109,27 @@ Global
 		{D8ADFBEF-9BF2-4C9C-89E6-8D906C0CD523}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8ADFBEF-9BF2-4C9C-89E6-8D906C0CD523}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{EEF4C4DD-5AAA-4C7D-A232-BAFECFEB687F} = {D3952782-534E-43B7-B97A-F9FC79A13BEC}
+		{11309AC7-3FF3-492A-A785-C78A0BB9CDEE} = {D3952782-534E-43B7-B97A-F9FC79A13BEC}
 		{B78F5B08-DA19-4BDF-8DC0-CB17A04ACCE9} = {96CC3CC0-13FB-402A-BD26-AE9F2AF8316E}
 		{A42BE9DD-E6AB-4871-8392-64649AC9326F} = {96CC3CC0-13FB-402A-BD26-AE9F2AF8316E}
 		{B1BBCCC5-7768-474D-A4C2-3C706F902706} = {96CC3CC0-13FB-402A-BD26-AE9F2AF8316E}
-		{EEF4C4DD-5AAA-4C7D-A232-BAFECFEB687F} = {D3952782-534E-43B7-B97A-F9FC79A13BEC}
-		{11309AC7-3FF3-492A-A785-C78A0BB9CDEE} = {D3952782-534E-43B7-B97A-F9FC79A13BEC}
 		{11A48C2A-A10A-4565-AADB-ACF476F7A6FB} = {D3952782-534E-43B7-B97A-F9FC79A13BEC}
 		{CB597445-9B1F-473F-A3DF-1DBC5C24CF07} = {D3952782-534E-43B7-B97A-F9FC79A13BEC}
 		{BDC48A89-5355-4F7C-B084-2FFD38A8158A} = {CB597445-9B1F-473F-A3DF-1DBC5C24CF07}
-		{1A505F9A-FF76-46F5-88BA-F82CBE601DAE} = {2E9C9656-1E86-478F-966A-C90E7D23D30C}
 		{82AA6408-77DA-45AD-A269-5B7A46D4264D} = {1A505F9A-FF76-46F5-88BA-F82CBE601DAE}
 		{C355D169-D92F-43F6-A79F-BBCF6651CB95} = {1A505F9A-FF76-46F5-88BA-F82CBE601DAE}
 		{18A1B1DF-4F41-4131-B100-43F1293D550A} = {1A505F9A-FF76-46F5-88BA-F82CBE601DAE}
+		{1A505F9A-FF76-46F5-88BA-F82CBE601DAE} = {2E9C9656-1E86-478F-966A-C90E7D23D30C}
 		{A13B7968-DD49-4DE4-B510-6DA3CBB4DCAF} = {2E9C9656-1E86-478F-966A-C90E7D23D30C}
 		{95EB48F6-7E7C-43F8-A924-11CCE544B05E} = {2E9C9656-1E86-478F-966A-C90E7D23D30C}
 		{D8ADFBEF-9BF2-4C9C-89E6-8D906C0CD523} = {CB597445-9B1F-473F-A3DF-1DBC5C24CF07}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D53EA125-38DA-4660-BDD1-9D344E550305}
 	EndGlobalSection
 EndGlobal

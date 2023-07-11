@@ -9,7 +9,7 @@ public interface IUserFileService
     /// </summary>
     /// <param name="fileName"></param>
     /// <returns>The found <see cref="UserFile"/> or <see langword="null"/> if none is found.</returns>
-    public ValueTask<UserFile?> GetByName(string fileName);
+    public ValueTask<UserFile?> GetFile(UserFileScope scope, string fileName);
     
     /// <summary>
     /// Saves file to the database.
@@ -22,6 +22,7 @@ public interface IUserFileService
     /// Finds all files that match <paramref name="prompt"/> and returns them as <see cref="UserFileInfo"/>.
     /// </summary>
     /// <param name="prompt">The part of file name.</param>
+    /// <param name="scope">The optional <see cref="UserFileScope"/> to limit the</param>
     /// <returns></returns>
-    public ValueTask<IReadOnlyCollection<UserFileInfo>> FindFiles(string prompt);
+    public ValueTask<IReadOnlyCollection<UserFileInfo>> FindFiles(string prompt, UserFileScope? scope = null);
 }

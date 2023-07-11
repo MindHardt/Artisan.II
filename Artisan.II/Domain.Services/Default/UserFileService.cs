@@ -16,9 +16,9 @@ public class UserFileService : IUserFileService
     }
 
 
-    public ValueTask<UserFile?> GetByName(string fileName)
+    public ValueTask<UserFile?> GetFile(UserFileScope scope, string fileName)
     {
-        return _repository.GetByName(fileName);
+        return _repository.GetByName(scope, fileName);
     }
 
     public async ValueTask<UserFile> SaveFile(UserFile file)
@@ -28,8 +28,8 @@ public class UserFileService : IUserFileService
         return await _repository.SaveFile(file);
     }
 
-    public async ValueTask<IReadOnlyCollection<UserFileInfo>> FindFiles(string prompt)
+    public async ValueTask<IReadOnlyCollection<UserFileInfo>> FindFiles(string prompt, UserFileScope? scope = null)
     {
-        return await _repository.FindFiles(prompt, MaxFileInfos);
+        return await _repository.FindFiles(prompt, MaxFileInfos, scope);
     }
 }

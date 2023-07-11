@@ -12,9 +12,10 @@ public class UserFileEfCoreRepository :
     {
     }
 
-    public async ValueTask<UserFile?> GetByName(string fileName)
+    public async ValueTask<UserFile?> GetByName(UserFileScope scope, string fileName)
     {
         return await Set
+            .Where(x => x.Scope == scope)
             .Where(x => x.Name == fileName)
             .FirstOrDefaultAsync();
     }
@@ -26,10 +27,14 @@ public class UserFileEfCoreRepository :
         return entry.Entity;
     }
 
-    public async ValueTask<IReadOnlyCollection<UserFileInfo>> FindFiles(string prompt, int maximum)
+    public async ValueTask<IReadOnlyCollection<UserFileInfo>> FindFiles(
+        string prompt, 
+        int maximum, 
+        UserFileScope? scope = null)
     {
         return await Set
-            .Where(x => EF.Functions.Like(x.Name, prompt))
+            .Where(x => scope == null || scope == x.Scope)
+            .Where(x => EF.Functions.Like(x.Name, $"%{prompt}%"))
             .OrderBy(x => x.Name)
             .Take(maximum)
             .Select(x => UserFileInfo.FromUserFile(x))

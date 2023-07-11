@@ -17,7 +17,7 @@ public class GetFileRequestHandler : IRequestHandler<GetFileRequest, GetFileResp
 
     public async Task<GetFileResponse> Handle(GetFileRequest request, CancellationToken cancellationToken)
     {
-        var file = await _userFileService.GetByName(request.FileName);
+        var file = await _userFileService.GetFile(request.Scope, request.FileName);
         NotFoundException.ThrowIfNull(file);
 
         return new GetFileResponse

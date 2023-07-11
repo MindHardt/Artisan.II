@@ -19,29 +19,49 @@ public class FilesController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("{FileName:file}")]
-    public async ValueTask<FileStreamResult> GetFile([FromRoute] GetFileRequest request)
+    [HttpGet("{scope}/{fileName:exists}")]
+    public async ValueTask<FileStreamResult> GetFile(
+        [FromRoute] UserFileScope scope,
+        [FromRoute] string fileName)
     {
+        var request = new GetFileRequest()
+        {
+            Scope = scope,
+            FileName = fileName
+        };
         var response = await _mediator.Send(request);
         return GetResult(response.File);
     }
     
-    [HttpPost]
-    public async ValueTask<PostFileResponse> PostFile(IFormFile file)
+    [HttpPost("{scope}")]
+    public async ValueTask<PostFileResponse> PostFile(
+        [FromRoute] UserFileScope scope, 
+        IFormFile file)
     {
-        var content = new MemoryStream();
-        await file.CopyToAsync(content);
         var userFile = new UserFile
         {
+            Scope = scope,
             Name = file.FileName,
-            Content = content.ToArray(),
+            Content = await file.OpenReadStream().ToByteArrayAsync(),  
             ContentType = file.ContentType,
         };
         var request = new PostFileRequest { File = userFile };
         return await _mediator.Send(request);
     }
 
-    [ApiExplorerSettings(IgnoreApi = true)]
-    public FileStreamResult GetResult(UserFile file) =>
+    [HttpGet("like/{prompt}")]
+    public async ValueTask<FindFilesResponse> FindFiles(
+        [FromRoute] string prompt,
+        [FromQuery] UserFileScope? scope = null)
+    {
+        var request = new FindFilesRequest
+        {
+            Prompt = prompt,
+            Scope = scope
+        };
+        return await _mediator.Send(request);
+    }
+
+    private static FileStreamResult GetResult(UserFile file) =>
         new(new MemoryStream(file.Content), file.ContentType);
 }

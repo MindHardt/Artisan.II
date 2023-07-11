@@ -1,3 +1,5 @@
+using System.Text.Encodings.Web;
+using System.Text.Json.Serialization;
 using Artisan.II.Data.EFCore;
 using Artisan.II.Data.Entities;
 using Artisan.II.Domain.CQRS.Handlers.Files;
@@ -38,7 +40,12 @@ builder.Services.AddMediatR(options =>
 
 builder.Services.AddDefaultServices();
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
 builder.Services.AddRazorPages();
 builder.Services.AddSwaggerGen();
 
